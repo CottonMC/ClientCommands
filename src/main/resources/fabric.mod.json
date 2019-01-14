@@ -1,0 +1,17 @@
+{
+  "id": "clientcommands",
+  "name": "Client Commands",
+  "description": "Allows purely client-side commands.",
+  "version": "0.1.0",
+  "side": "universal",
+  "initializers": [
+    "io.github.cottonmc.clientcommands.ClientCommands"
+  ],
+  "requires": {
+    "fabric": "*"
+  },
+  "mixins": {
+    "client": "client-commands.client.json",
+    "common": "client-commands.common.json"
+  }
+}

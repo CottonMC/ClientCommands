@@ -1,0 +1,46 @@
+plugins {
+    id 'fabric-loom' version '0.2.0-SNAPSHOT'
+    id 'maven-publish'
+    id 'com.jfrog.artifactory' version '4.9.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+archivesBaseName = "client-commands"
+group = "io.github.cottonmc"
+version = "0.1.0"
+
+minecraft {
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:19w02a"
+    mappings "net.fabricmc:yarn:19w02a.13"
+    modCompile "net.fabricmc:fabric-loader:0.3.2.92"
+
+    // Fabric API. This is technically optional, but you probably want it anyway.
+    modCompile "net.fabricmc:fabric:0.1.4.71"
+}
+
+apply from: "https://raw.githubusercontent.com/Juuxel/gradle-local-properties/master/loader.gradle.kts"
+
+artifactory {
+    contextUrl = "http://server.bbkr.space:8081/artifactory/"
+    publish {
+        repository {
+            /*if (project.version.toString().contains("SNAPSHOT")) {
+                repoKey = "libs-snapshot-local"
+            } else {
+                repoKey = "libs-release-local"
+            }*/
+            repoKey = "libs-snapshot-local"
+
+            username = cottonArtifactoryUser == null ? System.getProperty("artifactoryUser") : cottonArtifactoryUser
+            password = cottonArtifactoryPassword == null ? System.getProperty("artifactoryPassword") : cottonArtifactoryPassword
+        }
+        defaults {
+            publications("maven")
+        }
+    }
+}
