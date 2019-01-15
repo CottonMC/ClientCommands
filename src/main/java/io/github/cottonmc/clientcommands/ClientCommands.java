@@ -24,6 +24,12 @@ public final class ClientCommands implements ModInitializer {
         return Collections.unmodifiableSet(commands);
     }
 
+    /**
+     * Registers a function that adds client-side commands.
+     * The provided {@link CommandDispatcher} will exist only on the client.
+     *
+     * @param command the function
+     */
     public static void registerCommand(Consumer<CommandDispatcher<CommandSource>> command) {
         // TODO: (Maybe) error if a common/dedicated command with the same base is already registered
         if (FabricLoader.INSTANCE.getEnvironmentHandler().getEnvironmentType() == EnvType.CLIENT)
@@ -32,11 +38,21 @@ public final class ClientCommands implements ModInitializer {
 
     // Alternatives for ServerCommandSource.send[Feedback, Error]
 
+    /**
+     * Sends a chat message to the client player. A replacement for ServerCommandSource.sendFeedback().
+     *
+     * @param textComponent the message
+     */
     @Environment(EnvType.CLIENT)
     public static void sendFeedback(TextComponent textComponent) {
         MinecraftClient.getInstance().player.addChatMessage(textComponent, false);
     }
 
+    /**
+     * Sends a error chat message to the client player. A replacement for ServerCommandSource.sendError().
+     *
+     * @param textComponent the message
+     */
     @Environment(EnvType.CLIENT)
     public static void sendError(TextComponent textComponent) {
         MinecraftClient.getInstance().player.addChatMessage(

@@ -27,7 +27,7 @@ public abstract class PlayerMixin {
         if (msg.length() < 2 || !msg.startsWith("/")) return;
         boolean cancel = false;
         try {
-            // The game freezes when using heavy commands.
+            // The game freezes when using heavy commands. Run your heavy code somewhere else pls
             int result = client.getNetworkHandler().method_2886().execute(
                 msg.substring(1), new ClientCommandSource(client.getNetworkHandler(), client)
             );
