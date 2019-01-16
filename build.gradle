@@ -23,8 +23,7 @@ dependencies {
     modCompile "net.fabricmc:fabric:0.1.4.71"
 }
 
-// TODO: Why doesn't this work?? //just use private.gradle
-//apply from: "https://raw.githubusercontent.com/Juuxel/gradle-local-properties/master/loader.gradle.kts"
+apply from: "https://raw.githubusercontent.com/Juuxel/gradle-local-properties/master/loader.gradle.kts"
 
 if (rootProject.file("private.gradle").exists()) {
     apply from: "private.gradle"
