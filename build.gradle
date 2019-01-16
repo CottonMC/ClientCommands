@@ -23,7 +23,16 @@ dependencies {
     modCompile "net.fabricmc:fabric:0.1.4.71"
 }
 
-apply from: "https://raw.githubusercontent.com/Juuxel/gradle-local-properties/master/loader.gradle.kts"
+// Load private.properties
+def privateConfigFile = rootProject.file("private.properties")
+
+if (privateConfigFile.exists()) {
+    def props = new Properties()
+    props.load(new FileReader(privateConfigFile))
+    props.forEach { key, value ->
+        ext[key.toString()] = value
+    }
+}
 
 if (rootProject.file("private.gradle").exists()) {
     apply from: "private.gradle"
