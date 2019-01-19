@@ -9,18 +9,18 @@ targetCompatibility = 1.8
 
 archivesBaseName = "client-commands"
 group = "io.github.cottonmc"
-version = "0.1.0+19w02a-SNAPSHOT"
+version = "0.1.0+19w03c-SNAPSHOT"
 
 minecraft {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:19w02a"
-    mappings "net.fabricmc:yarn:19w02a.13"
-    modCompile "net.fabricmc:fabric-loader:0.3.2.92"
+    minecraft "com.mojang:minecraft:19w03c"
+    mappings "net.fabricmc:yarn:19w03c.1"
+    modCompile "net.fabricmc:fabric-loader:0.3.3.98"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
-    modCompile "net.fabricmc:fabric:0.1.4.71"
+    modCompile "net.fabricmc:fabric:0.1.4.77"
 }
 
 // Load private.properties
