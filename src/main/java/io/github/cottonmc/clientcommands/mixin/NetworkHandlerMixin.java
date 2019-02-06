@@ -4,7 +4,7 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.clientcommands.ClientCommands;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.Screen;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.packet.CommandTreeClientPacket;
 import net.minecraft.network.ClientConnection;
@@ -25,7 +25,7 @@ public class NetworkHandlerMixin {
     }
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void onConstruct(MinecraftClient mc, Gui gui, ClientConnection cc, GameProfile gp, CallbackInfo info) {
+    private void onConstruct(MinecraftClient mc, Screen screen, ClientConnection cc, GameProfile gp, CallbackInfo info) {
         addCommands();
     }
 
