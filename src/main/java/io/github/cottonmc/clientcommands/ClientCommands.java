@@ -3,7 +3,7 @@ package io.github.cottonmc.clientcommands;
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.loader.FabricLoader;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.command.CommandSource;
 
 import java.util.Collection;
@@ -27,7 +27,7 @@ public final class ClientCommands implements ModInitializer {
      */
     public static void registerCommand(Consumer<CommandDispatcher<CommandSource>> command) {
         // TODO: (Maybe) error if a common/dedicated command with the same base is already registered
-        if (FabricLoader.INSTANCE.getEnvironmentHandler().getEnvironmentType() == EnvType.CLIENT)
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT)
             commands.add(command);
     }
 
