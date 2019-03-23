@@ -1,0 +1,31 @@
+ext {
+    projectName = "client-commands"
+    group = "io.github.cottonmc"
+    version = "0.1.0+19w12b"
+    snapshot = true
+
+    minecraft = "19w12b"
+    mappings = "19w12b.3"
+    loader = "0.3.7.109"
+    fabricMod = "0.2.5.114"
+    silkMod = null
+    jankson = null
+    needsShadow = false
+}
+
+repositories {
+}
+
+dependencies {
+}
+
+// Load private.properties
+def privateConfigFile = rootProject.file("private.properties")
+
+if (privateConfigFile.exists()) {
+    def props = new Properties()
+    props.load(new FileReader(privateConfigFile))
+    props.forEach { key, value ->
+        ext[key.toString()] = value
+    }
+}

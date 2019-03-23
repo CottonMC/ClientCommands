@@ -28,7 +28,7 @@ public abstract class PlayerMixin {
         boolean cancel = false;
         try {
             // The game freezes when using heavy commands. Run your heavy code somewhere else pls
-            int result = client.getNetworkHandler().method_2886().execute(
+            int result = client.getNetworkHandler().getCommandDispatcher().execute(
                 msg.substring(1), new ClientCommandSource(client.getNetworkHandler(), client)
             );
             if (result != 0)

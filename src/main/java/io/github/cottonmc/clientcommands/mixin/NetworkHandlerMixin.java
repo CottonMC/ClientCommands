@@ -6,7 +6,7 @@ import io.github.cottonmc.clientcommands.ClientCommands;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.network.packet.CommandTreeClientPacket;
+import net.minecraft.client.network.packet.CommandTreeS2CPacket;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.command.CommandSource;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,7 +20,7 @@ public class NetworkHandlerMixin {
     @Shadow private CommandDispatcher<CommandSource> commandDispatcher;
 
     @Inject(method = "onCommandTree", at = @At("RETURN"))
-    private void onCommandTree(CommandTreeClientPacket packet, CallbackInfo info) {
+    private void onCommandTree(CommandTreeS2CPacket packet, CallbackInfo info) {
         addCommands();
     }
 
