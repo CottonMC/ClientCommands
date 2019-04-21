@@ -3,16 +3,23 @@
   "id": "clientcommands",
   "name": "Client Commands",
   "description": "Allows purely client-side commands.",
-  "version": "0.2.0",
+  "version": "$version",
   "environment": "client",
   "license": "MIT",
+  "contact": {
+    "homepage": "https://github.com/CottonMC/ClientCommands",
+    "sources": "https://github.com/CottonMC/ClientCommands",
+    "issues": "https://github.com/CottonMC/ClientCommands/issues"
+  },
   "requires": {
     "fabricloader": ">=0.4.0"
   },
   "mixins": [
     "mixins.client-commands.json"
   ],
+  "icon": "icon.png",
   "custom": {
+    "modmenu:api": true,
     "modmenu:clientsideOnly": true
   }
 }

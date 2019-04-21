@@ -1,7 +1,7 @@
 ext {
     projectName = "client-commands"
     group = "io.github.cottonmc"
-    version = "0.2.0+1.14-pre5"
+    version = "0.2.1+1.14-pre5"
     snapshot = true
 
     minecraft = "1.14 Pre-Release 5"
@@ -27,5 +27,11 @@ if (privateConfigFile.exists()) {
     props.load(new FileReader(privateConfigFile))
     props.forEach { key, value ->
         ext[key.toString()] = value
+    }
+}
+
+processResources {
+    filesMatching("fabric.mod.json") {
+        expand "version": project.ext.version
     }
 }
