@@ -1,4 +1,4 @@
-<img src="src/main/resources/icon.png" align="right" width="180px"/>
+<img src="icon.png" align="right" width="180px"/>
 
 # Client Commands
 
