@@ -3,12 +3,12 @@ package io.github.cottonmc.clientcommands.test;
 import io.github.cottonmc.clientcommands.ArgumentBuilders;
 import io.github.cottonmc.clientcommands.ClientCommands;
 import io.github.cottonmc.clientcommands.Feedback;
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.text.StringTextComponent;
 
-public class ExampleMod implements ModInitializer {
+public class ExampleMod implements ClientModInitializer {
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
         ClientCommands.registerCommand(dispatcher -> {
             dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
                 source -> {

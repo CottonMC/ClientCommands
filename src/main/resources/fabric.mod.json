@@ -1,16 +1,18 @@
 {
+  "schemaVersion": 1,
   "id": "clientcommands",
   "name": "Client Commands",
   "description": "Allows purely client-side commands.",
-  "version": "0.1.0",
-  "side": "universal",
-  "initializers": [
-    "io.github.cottonmc.clientcommands.ClientCommands"
-  ],
+  "version": "0.2.0",
+  "environment": "client",
+  "license": "MIT",
   "requires": {
-    "fabric": "*"
+    "fabricloader": ">=0.4.0"
   },
-  "mixins": {
-    "client": "mixins.client-commands.client.json"
+  "mixins": [
+    "mixins.client-commands.json"
+  ],
+  "custom": {
+    "modmenu:clientsideOnly": true
   }
 }
