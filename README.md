@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:client-commands:0.2.0+1.14-pre5"
+    modCompile "io.github.cottonmc:client-commands:0.2.1+1.14-pre5-SNAPSHOT"
 }
 ```
 
