@@ -1,6 +1,8 @@
 <img src="icon.png" align="right" width="180px"/>
 
-# Client Commands
+# Cotton Client Commands
+
+[![Maven metadata URL](https://img.shields.io/maven-metadata/v/http/server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/client-commands/maven-metadata.xml.svg)](http://server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/client-commands)
 
 [>> Downloads <<](https://github.com/CottonMC/ClientCommands/releases)
 
@@ -21,25 +23,37 @@ repositories {
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:client-commands:0.2.1+1.14-pre5-SNAPSHOT"
+    modCompile "io.github.cottonmc:client-commands:0.3.0+1.14-SNAPSHOT"
 }
 ```
 
-Register the commands in a `ClientModInitializer`:
+Register the commands in a `CommandProvider`:
 
 ```java
-public class ExampleMod implements ClientModInitializer {
-    @Override
-    public void onInitializeClient() {
-        ClientCommands.registerCommand(dispatcher -> {
-            dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
-                source -> {
-                    Feedback.sendFeedback(new StringTextComponent("Hello, world!"));
-                    return 1;
-                }
-            ));
-        });
+import com.mojang.brigadier.CommandDispatcher;
+import io.github.cottonmc.clientcommands.CommandProvider;
+import net.minecraft.server.command.CommandSource;
+
+public class MyCommands implements CommandProvider {
+	@Override
+	public void registerCommands(CommandDispatcher<CommandSource> dispatcher) {
+        dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
+            source -> {
+                Feedback.sendFeedback(new StringTextComponent("Hello, world!"));
+                return 1;
+            }
+        ));
     }
+}
+```
+
+And register the `CommandProvider` in your `fabric.mod.json`:
+
+```json
+{
+  "entrypoints": {
+    "cotton-client-commands": ["path.to.MyCommands"]
+  }
 }
 ```
 

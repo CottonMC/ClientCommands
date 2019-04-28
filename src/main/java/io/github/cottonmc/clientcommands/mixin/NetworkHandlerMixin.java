@@ -3,6 +3,7 @@ package io.github.cottonmc.clientcommands.mixin;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.clientcommands.ClientCommands;
+import io.github.cottonmc.clientcommands.impl.CommandCache;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -28,10 +29,11 @@ public class NetworkHandlerMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onConstruct(MinecraftClient mc, Screen screen, ClientConnection cc, GameProfile gp, CallbackInfo info) {
         addCommands();
+        CommandCache.build();
     }
 
     @Unique
     private void addCommands() {
-        ClientCommands.getCommands().forEach(c -> c.accept(commandDispatcher));
+        ClientCommands.getCommandProviders().forEach(c -> c.registerCommands(commandDispatcher));
     }
 }

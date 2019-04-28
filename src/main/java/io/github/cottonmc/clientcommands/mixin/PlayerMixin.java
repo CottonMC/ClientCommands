@@ -1,6 +1,7 @@
 package io.github.cottonmc.clientcommands.mixin;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import io.github.cottonmc.clientcommands.impl.CommandCache;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -25,6 +26,8 @@ public abstract class PlayerMixin {
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onChatMessage(String msg, CallbackInfo info) {
         if (msg.length() < 2 || !msg.startsWith("/")) return;
+        if (!CommandCache.hasCommand(msg.substring(1).split(" ")[0])) return;
+        // TODO: Test
         boolean cancel = false;
         try {
             // The game freezes when using heavy commands. Run your heavy code somewhere else pls

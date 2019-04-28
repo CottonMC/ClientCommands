@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "clientcommands",
-  "name": "Client Commands",
-  "description": "Allows purely client-side commands.",
+  "id": "cotton-client-commands",
+  "name": "Cotton Client Commands",
+  "description": "An API for purely client-side commands.",
   "version": "$version",
   "environment": "client",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "fabricloader": ">=0.4.0"
   },
   "mixins": [
-    "mixins.client-commands.json"
+    "mixins.cotton-client-commands.json"
   ],
   "icon": "icon.png",
   "custom": {
