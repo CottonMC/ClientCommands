@@ -35,8 +35,8 @@ import io.github.cottonmc.clientcommands.CommandProvider;
 import net.minecraft.server.command.CommandSource;
 
 public class MyCommands implements CommandProvider {
-	@Override
-	public void registerCommands(CommandDispatcher<CommandSource> dispatcher) {
+    @Override
+    public void registerCommands(CommandDispatcher<CommandSource> dispatcher) {
         dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
             source -> {
                 Feedback.sendFeedback(new StringTextComponent("Hello, world!"));
