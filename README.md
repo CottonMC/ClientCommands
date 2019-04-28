@@ -27,14 +27,15 @@ dependencies {
 }
 ```
 
-Register the commands in a `CommandProvider`:
+Register the commands with a `ClientCommandPlugin`:
 
 ```java
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.cottonmc.clientcommands.CommandProvider;
+import io.github.cottonmc.clientcommands.*;
 import net.minecraft.server.command.CommandSource;
+import net.minecraft.text.StringTextComponent;
 
-public class MyCommands implements CommandProvider {
+public class MyCommands implements ClientCommandPlugin {
     @Override
     public void registerCommands(CommandDispatcher<CommandSource> dispatcher) {
         dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
@@ -47,7 +48,7 @@ public class MyCommands implements CommandProvider {
 }
 ```
 
-And register the `CommandProvider` in your `fabric.mod.json`:
+And register the plugin entrypoint in your `fabric.mod.json`:
 
 ```json
 {

@@ -15,7 +15,7 @@ public final class CommandCache {
 	private static final CommandDispatcher<CommandSource> DISPATCHER = new CommandDispatcher<>();
 
 	public static void build() {
-		ClientCommands.getCommandProviders().forEach(provider -> provider.registerCommands(DISPATCHER));
+		ClientCommands.getPlugins().forEach(provider -> provider.registerCommands(DISPATCHER));
 	}
 
 	public static boolean hasCommand(String name) {

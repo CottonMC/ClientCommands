@@ -34,6 +34,6 @@ public class NetworkHandlerMixin {
 
     @Unique
     private void addCommands() {
-        ClientCommands.getCommandProviders().forEach(c -> c.registerCommands(commandDispatcher));
+        ClientCommands.getPlugins().forEach(c -> c.registerCommands(commandDispatcher));
     }
 }
