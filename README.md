@@ -2,7 +2,7 @@
 
 # Cotton Client Commands
 
-[![Maven metadata URL](https://img.shields.io/maven-metadata/v/http/server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/client-commands/maven-metadata.xml.svg)](http://server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/client-commands)
+[![Maven metadata URL](https://img.shields.io/maven-metadata/v/http/server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/cotton-client-commands/maven-metadata.xml.svg)](http://server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/cotton-client-commands)
 
 [>> Downloads <<](https://github.com/CottonMC/ClientCommands/releases)
 
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:client-commands:0.3.0+1.14-SNAPSHOT"
+    modCompile "io.github.cottonmc:cotton-client-commands:0.3.0+1.14-SNAPSHOT"
 }
 ```
 

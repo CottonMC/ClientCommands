@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "cotton-client-commands-test",
+  "name": "Cotton Client Commands Test",
+  "version": "1",
+  "environment": "client",
+  "license": "MIT",
+  "requires": {
+    "cotton-client-commands": ">=0.3.0"
+  },
+  "entrypoints": {
+    "cotton-client-command": [
+      "io.github.cottonmc.clientcommands.test.ExampleModCommands"
+    ]
+  }
+}

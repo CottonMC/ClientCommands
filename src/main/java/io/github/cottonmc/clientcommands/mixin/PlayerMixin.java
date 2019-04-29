@@ -27,7 +27,6 @@ public abstract class PlayerMixin {
     private void onChatMessage(String msg, CallbackInfo info) {
         if (msg.length() < 2 || !msg.startsWith("/")) return;
         if (!CommandCache.hasCommand(msg.substring(1).split(" ")[0])) return;
-        // TODO: Test
         boolean cancel = false;
         try {
             // The game freezes when using heavy commands. Run your heavy code somewhere else pls
