@@ -1,7 +1,7 @@
 ext {
     projectName = "cotton-client-commands"
     group = "io.github.cottonmc"
-    version = "0.3.0+1.14"
+    version = "0.3.1+1.14"
     snapshot = true
 
     minecraft = "1.14"

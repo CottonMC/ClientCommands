@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:cotton-client-commands:0.3.0+1.14-SNAPSHOT"
+    modCompile "io.github.cottonmc:cotton-client-commands:0.3.1+1.14-SNAPSHOT"
 }
 ```
 
