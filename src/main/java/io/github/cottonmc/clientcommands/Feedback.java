@@ -9,8 +9,11 @@ import net.minecraft.network.chat.TextComponent;
 
 /**
  * Client-side replacements for ServerCommandSource.send[Feedback, Error]
+ *
+ * @deprecated Use {@link CottonClientCommandSource} instead.
  */
 @Environment(EnvType.CLIENT)
+@Deprecated
 public final class Feedback {
     private Feedback() {}
 

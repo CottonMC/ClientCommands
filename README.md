@@ -12,7 +12,7 @@ A Minecraft library for 1.14 that adds support for client-side commands.
 
 ## Usage
 
-Add a dependency in your `build.gradle`:
+Add a dependency in your `build.gradle` or `build.gradle.kts`:
 
 ```groovy
 repositories {
@@ -23,24 +23,40 @@ repositories {
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:cotton-client-commands:0.3.1+1.14-SNAPSHOT"
+    modCompile "io.github.cottonmc:cotton-client-commands:0.4.0+1.14.2-SNAPSHOT"
 }
 ```
+
+<details>
+    <summary>build.gradle.kts</summary><p>
+    
+```kotlin
+repositories {
+    maven(url = "http://server.bbkr.space:8081/artifactory/libs-snapshot") {
+        name = "CottonMC"
+    }
+}
+
+dependencies {
+    modCompile("io.github.cottonmc:cotton-client-commands:0.4.0+1.14.2-SNAPSHOT")
+}
+```
+</details>
 
 Register the commands with a `ClientCommandPlugin`:
 
 ```java
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.clientcommands.*;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.command.CommandSource;
-import net.minecraft.text.StringTextComponent;
 
 public class MyCommands implements ClientCommandPlugin {
     @Override
-    public void registerCommands(CommandDispatcher<CommandSource> dispatcher) {
+    public void registerCommands(CommandDispatcher<CottonClientCommandSource> dispatcher) {
         dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
             source -> {
-                Feedback.sendFeedback(new StringTextComponent("Hello, world!"));
+                source.getSource().sendFeedback(new TextComponent("Hello, world!"));
                 return 1;
             }
         ));
@@ -58,5 +74,5 @@ And register the plugin entrypoint in your `fabric.mod.json`:
 }
 ```
 
-The classes `ArgumentBuilders` and `Feedback` are provided as
-alternatives to `CommandManager` and the feedback methods in `ServerCommandSource`. 
+The classes `ArgumentBuilders` and `CottonClientCommandSource` are provided as
+alternatives to `CommandManager` and `ServerCommandSource`. 

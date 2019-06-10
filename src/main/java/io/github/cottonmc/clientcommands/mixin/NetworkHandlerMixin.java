@@ -33,7 +33,8 @@ public class NetworkHandlerMixin {
     }
 
     @Unique
+    @SuppressWarnings("unchecked")
     private void addCommands() {
-        ClientCommands.getPlugins().forEach(c -> c.registerCommands(commandDispatcher));
+        ClientCommands.getPlugins().forEach(c -> c.registerCommands((CommandDispatcher) commandDispatcher));
     }
 }

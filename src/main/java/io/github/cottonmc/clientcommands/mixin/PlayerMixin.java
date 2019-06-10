@@ -2,9 +2,9 @@ package io.github.cottonmc.clientcommands.mixin;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.cottonmc.clientcommands.impl.CommandCache;
+import io.github.cottonmc.clientcommands.impl.CottonClientCommandSourceImpl;
 import net.minecraft.ChatFormat;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.command.CommandException;
 import net.minecraft.network.chat.Component;
@@ -30,8 +30,8 @@ public abstract class PlayerMixin {
         boolean cancel = false;
         try {
             // The game freezes when using heavy commands. Run your heavy code somewhere else pls
-            int result = client.getNetworkHandler().getCommandDispatcher().execute(
-                msg.substring(1), new ClientCommandSource(client.getNetworkHandler(), client)
+            int result = CommandCache.execute(
+                msg.substring(1), new CottonClientCommandSourceImpl(client.getNetworkHandler(), client)
             );
             if (result != 0)
                 // Prevent sending the message

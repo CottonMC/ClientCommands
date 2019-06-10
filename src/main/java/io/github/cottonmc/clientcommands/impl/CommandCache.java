@@ -1,10 +1,11 @@
 package io.github.cottonmc.clientcommands.impl;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.cottonmc.clientcommands.ClientCommands;
+import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.server.command.CommandSource;
 
 import java.util.Collections;
 
@@ -12,10 +13,14 @@ import java.util.Collections;
 public final class CommandCache {
 	private CommandCache() {}
 
-	private static final CommandDispatcher<CommandSource> DISPATCHER = new CommandDispatcher<>();
+	private static final CommandDispatcher<CottonClientCommandSource> DISPATCHER = new CommandDispatcher<>();
 
 	public static void build() {
 		ClientCommands.getPlugins().forEach(provider -> provider.registerCommands(DISPATCHER));
+	}
+
+	public static int execute(String input, CottonClientCommandSource source) throws CommandSyntaxException {
+		return DISPATCHER.execute(input, source);
 	}
 
 	public static boolean hasCommand(String name) {
