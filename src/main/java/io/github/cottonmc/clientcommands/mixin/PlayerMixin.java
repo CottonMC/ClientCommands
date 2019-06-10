@@ -2,14 +2,14 @@ package io.github.cottonmc.clientcommands.mixin;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.cottonmc.clientcommands.impl.CommandCache;
+import net.minecraft.ChatFormat;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.command.CommandException;
-import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TextFormat;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class PlayerMixin {
     @Shadow @Final protected MinecraftClient client;
 
-    @Shadow public abstract void addChatMessage(TextComponent textComponent_1, boolean boolean_1);
+    @Shadow public abstract void addChatMessage(Component textComponent_1, boolean boolean_1);
 
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onChatMessage(String msg, CallbackInfo info) {
@@ -37,13 +37,13 @@ public abstract class PlayerMixin {
                 // Prevent sending the message
                 cancel = true;
         } catch (CommandException e) {
-            addChatMessage(e.getMessageComponent().applyFormat(TextFormat.RED), false);
+            addChatMessage(e.getMessageComponent().applyFormat(ChatFormat.RED), false);
             cancel = true;
         } catch (CommandSyntaxException e) {
-            addChatMessage(new StringTextComponent(e.getMessage()).applyFormat(TextFormat.RED), false);
+            addChatMessage(new TextComponent(e.getMessage()).applyFormat(ChatFormat.RED), false);
             cancel = true;
         } catch (Exception e) {
-            addChatMessage(new TranslatableTextComponent("command.failed").applyFormat(TextFormat.RED), false);
+            addChatMessage(new TranslatableComponent("command.failed").applyFormat(ChatFormat.RED), false);
             cancel = true;
         }
 
