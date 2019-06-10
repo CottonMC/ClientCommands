@@ -2,10 +2,10 @@ package io.github.cottonmc.clientcommands;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.ChatFormat;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TextFormat;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 
 /**
  * Client-side replacements for ServerCommandSource.send[Feedback, Error]
@@ -19,7 +19,7 @@ public final class Feedback {
      *
      * @param textComponent the message
      */
-    public static void sendFeedback(TextComponent textComponent) {
+    public static void sendFeedback(Component textComponent) {
         MinecraftClient.getInstance().player.addChatMessage(textComponent, false);
     }
 
@@ -28,9 +28,9 @@ public final class Feedback {
      *
      * @param textComponent the message
      */
-    public static void sendError(TextComponent textComponent) {
+    public static void sendError(Component textComponent) {
         MinecraftClient.getInstance().player.addChatMessage(
-                new StringTextComponent("").append(textComponent).applyFormat(TextFormat.RED), false
+                new TextComponent("").append(textComponent).applyFormat(ChatFormat.RED), false
         );
     }
 }

@@ -1,12 +1,12 @@
 ext {
     projectName = "cotton-client-commands"
     group = "io.github.cottonmc"
-    version = "0.3.1+1.14"
+    version = "0.3.1+1.14.2"
     snapshot = true
 
-    minecraft = "1.14"
-    mappings = "1.14+build.3"
-    loader = "0.4.4+build.139"
+    minecraft = "1.14.2"
+    mappings = "1.14.2+build.1"
+    loader = "0.4.8+build.154"
     fabricMod = null
     silkMod = null
     jankson = null
