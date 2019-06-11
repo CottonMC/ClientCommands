@@ -1,23 +1,19 @@
-package io.github.cottonmc.clientcommands.impl;
+package io.github.cottonmc.clientcommands.mixin;
 
 import io.github.cottonmc.clientcommands.CottonClientCommandSource;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormat;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
-import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 
-@Environment(EnvType.CLIENT)
-public final class CottonClientCommandSourceImpl extends ClientCommandSource implements CottonClientCommandSource {
-    private final MinecraftClient client;
-
-    public CottonClientCommandSourceImpl(ClientPlayNetworkHandler networkHandler, MinecraftClient client) {
-        super(networkHandler, client);
-        this.client = client;
-    }
+@Mixin(ClientCommandSource.class)
+public abstract class ClientCommandSourceMixin implements CottonClientCommandSource {
+    @Shadow @Final
+    private MinecraftClient client;
 
     @Override
     public void sendFeedback(Component component) {

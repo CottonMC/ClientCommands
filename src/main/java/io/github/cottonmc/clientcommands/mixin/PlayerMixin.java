@@ -1,10 +1,12 @@
 package io.github.cottonmc.clientcommands.mixin;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import io.github.cottonmc.clientcommands.impl.CommandCache;
-import io.github.cottonmc.clientcommands.impl.CottonClientCommandSourceImpl;
 import net.minecraft.ChatFormat;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientCommandSource;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.command.CommandException;
 import net.minecraft.network.chat.Component;
@@ -19,9 +21,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayerEntity.class)
 public abstract class PlayerMixin {
-    @Shadow @Final protected MinecraftClient client;
+    @Shadow @Final
+    protected MinecraftClient client;
 
-    @Shadow public abstract void addChatMessage(Component textComponent_1, boolean boolean_1);
+    @Shadow @Final
+    public ClientPlayNetworkHandler networkHandler;
+
+    @Shadow
+    public abstract void addChatMessage(Component textComponent_1, boolean boolean_1);
 
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onChatMessage(String msg, CallbackInfo info) {
@@ -31,7 +38,7 @@ public abstract class PlayerMixin {
         try {
             // The game freezes when using heavy commands. Run your heavy code somewhere else pls
             int result = CommandCache.execute(
-                msg.substring(1), new CottonClientCommandSourceImpl(client.getNetworkHandler(), client)
+                msg.substring(1), (CottonClientCommandSource) new ClientCommandSource(networkHandler, client)
             );
             if (result != 0)
                 // Prevent sending the message
