@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:cotton-client-commands:0.4.0+1.14.2-SNAPSHOT"
+    modCompile "io.github.cottonmc:cotton-client-commands:<latest version>-SNAPSHOT"
 }
 ```
 
@@ -38,7 +38,7 @@ repositories {
 }
 
 dependencies {
-    modCompile("io.github.cottonmc:cotton-client-commands:0.4.0+1.14.2-SNAPSHOT")
+    modCompile("io.github.cottonmc:cotton-client-commands:<latest version>-SNAPSHOT")
 }
 ```
 </details>
@@ -48,15 +48,15 @@ Register the commands with a `ClientCommandPlugin`:
 ```java
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.clientcommands.*;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.command.CommandSource;
+import net.minecraft.text.LiteralText;
 
 public class MyCommands implements ClientCommandPlugin {
     @Override
     public void registerCommands(CommandDispatcher<CottonClientCommandSource> dispatcher) {
         dispatcher.register(ArgumentBuilders.literal("client-commands").executes(
             source -> {
-                source.getSource().sendFeedback(new TextComponent("Hello, world!"));
+                source.getSource().sendFeedback(new LiteralText("Hello, world!"));
                 return 1;
             }
         ));
