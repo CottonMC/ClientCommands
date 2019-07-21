@@ -11,7 +11,7 @@
     "sources": "https://github.com/CottonMC/ClientCommands",
     "issues": "https://github.com/CottonMC/ClientCommands/issues"
   },
-  "requires": {
+  "depends": {
     "fabricloader": ">=0.4.0"
   },
   "mixins": [
