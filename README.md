@@ -2,7 +2,7 @@
 
 # Cotton Client Commands
 
-[![Maven metadata URL](https://img.shields.io/maven-metadata/v/https/server.bbkr.space:8081/artifactory/libs-release/io/github/cottonmc/cotton-client-commands/maven-metadata.xml.svg)](http://server.bbkr.space:8081/artifactory/libs-snapshot/io/github/cottonmc/cotton-client-commands)
+[![Maven metadata URL](https://img.shields.io/maven-metadata/v/https/server.bbkr.space:8081/artifactory/libs-release/io/github/cottonmc/cotton-client-commands/maven-metadata.xml.svg)](https://server.bbkr.space:8081/artifactory/libs-release/io/github/cottonmc/cotton-client-commands)
 
 [>> Downloads <<](https://github.com/CottonMC/ClientCommands/releases)
 
