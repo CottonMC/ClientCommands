@@ -18,12 +18,12 @@ Add a dependency in your `build.gradle` or `build.gradle.kts`:
 repositories {
     maven {
         name = 'CottonMC'
-        url = 'http://server.bbkr.space:8081/artifactory/libs-snapshot'
+        url = 'https://server.bbkr.space:8081/artifactory/libs-release'
     }
 }
 
 dependencies {
-    modCompile "io.github.cottonmc:cotton-client-commands:<latest version>-SNAPSHOT"
+    modImplementation "io.github.cottonmc:cotton-client-commands:<latest version>-SNAPSHOT"
 }
 ```
 
@@ -32,13 +32,14 @@ dependencies {
     
 ```kotlin
 repositories {
-    maven(url = "http://server.bbkr.space:8081/artifactory/libs-snapshot") {
+    maven {
         name = "CottonMC"
+        url = uri("https://server.bbkr.space:8081/artifactory/libs-release")
     }
 }
 
 dependencies {
-    modCompile("io.github.cottonmc:cotton-client-commands:<latest version>-SNAPSHOT")
+    modImplementation("io.github.cottonmc:cotton-client-commands:<latest version>-SNAPSHOT")
 }
 ```
 </details>
