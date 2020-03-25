@@ -18,7 +18,7 @@ Add a dependency in your `build.gradle` or `build.gradle.kts`:
 repositories {
     maven {
         name = 'CottonMC'
-        url = 'https://server.bbkr.space:8081/artifactory/libs-release'
+        url = 'https://server.bbkr.space/artifactory/libs-release'
     }
 }
 
@@ -34,7 +34,7 @@ dependencies {
 repositories {
     maven {
         name = "CottonMC"
-        url = uri("https://server.bbkr.space:8081/artifactory/libs-release")
+        url = uri("https://server.bbkr.space/artifactory/libs-release")
     }
 }
 
