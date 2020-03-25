@@ -8,7 +8,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = 'cotton-client-commands'
-version = "$project.mod_version+$project.minecraft_version" + (project.snapshot ? '-SNAPSHOT' : '')
+version = "$project.mod_version+$project.minecraft_version"
 group = project.maven_group
 
 minecraft {
@@ -95,11 +95,7 @@ artifactory {
         contextUrl = 'http://server.bbkr.space:8081/artifactory/'
         publish {
             repository {
-                if (version.contains("SNAPSHOT")) {
-                    repoKey = "libs-snapshot"
-                } else {
-                    repoKey = "libs-release"
-                }
+                repoKey = "libs-release"
                 username = artifactoryUsername
                 password = artifactoryPassword
             }
