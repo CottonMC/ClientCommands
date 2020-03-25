@@ -5,8 +5,8 @@
   "version": "1",
   "environment": "client",
   "license": "MIT",
-  "requires": {
-    "cotton-client-commands": ">=0.3.0"
+  "depends": {
+    "cotton-client-commands": "^1.0.0"
   },
   "entrypoints": {
     "cotton-client-command": [

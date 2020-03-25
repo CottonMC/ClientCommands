@@ -1,6 +1,7 @@
-package io.github.cottonmc.clientcommands;
+package io.github.cottonmc.clientcommands.impl;
 
 import com.google.common.collect.ImmutableList;
+import io.github.cottonmc.clientcommands.ClientCommandPlugin;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Lazy;
 

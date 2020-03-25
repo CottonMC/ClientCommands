@@ -16,8 +16,13 @@ public abstract class ClientCommandSourceMixin implements CottonClientCommandSou
     private MinecraftClient client;
 
     @Override
-    public void sendFeedback(Text text) {
-        client.player.addChatMessage(text, false);
+    public void sendFeedback(Text message) {
+        client.player.addChatMessage(message, false);
+    }
+
+    @Override
+    public void sendFeedback(Text message, boolean actionBar) {
+        client.player.addChatMessage(message, actionBar);
     }
 
     @Override

@@ -2,7 +2,6 @@ package io.github.cottonmc.clientcommands.impl;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import io.github.cottonmc.clientcommands.ClientCommands;
 import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

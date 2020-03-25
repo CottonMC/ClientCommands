@@ -2,13 +2,13 @@ package io.github.cottonmc.clientcommands.mixin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.cottonmc.clientcommands.ClientCommands;
+import io.github.cottonmc.clientcommands.impl.ClientCommands;
 import io.github.cottonmc.clientcommands.impl.CommandCache;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.network.packet.CommandTreeS2CPacket;
 import net.minecraft.network.ClientConnection;
+import net.minecraft.network.packet.s2c.play.CommandTreeS2CPacket;
 import net.minecraft.server.command.CommandSource;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
