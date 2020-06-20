@@ -12,7 +12,7 @@
     "issues": "https://github.com/CottonMC/ClientCommands/issues"
   },
   "depends": {
-    "fabricloader": ">=0.4.0"
+    "fabricloader": ">=0.8.8"
   },
   "mixins": [
     "mixins.cotton-client-commands.json"
