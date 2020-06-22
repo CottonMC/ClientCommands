@@ -3,15 +3,15 @@ package io.github.cottonmc.clientcommands.mixin;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import io.github.cottonmc.clientcommands.impl.CommandCache;
-import net.minecraft.util.Formatting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.command.CommandException;
-import net.minecraft.text.Text;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,7 +28,7 @@ public abstract class PlayerMixin {
     public ClientPlayNetworkHandler networkHandler;
 
     @Shadow
-    public abstract void addChatMessage(Text text_1, boolean boolean_1);
+    public abstract void sendMessage(Text text_1, boolean boolean_1);
 
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onChatMessage(String msg, CallbackInfo info) {
@@ -44,13 +44,13 @@ public abstract class PlayerMixin {
                 // Prevent sending the message
                 cancel = true;
         } catch (CommandException e) {
-            addChatMessage(e.getTextMessage().formatted(Formatting.RED), false);
+            sendMessage(e.getTextMessage().copy().formatted(Formatting.RED), false);
             cancel = true;
         } catch (CommandSyntaxException e) {
-            addChatMessage(new LiteralText(e.getMessage()).formatted(Formatting.RED), false);
+            sendMessage(new LiteralText(e.getMessage()).formatted(Formatting.RED), false);
             cancel = true;
         } catch (Exception e) {
-            addChatMessage(new TranslatableText("command.failed").formatted(Formatting.RED), false);
+            sendMessage(new TranslatableText("command.failed").formatted(Formatting.RED), false);
             cancel = true;
         }
 
